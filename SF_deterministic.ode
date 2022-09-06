@@ -1,0 +1,183 @@
+# Paper: 
+# Author: Vinodhini Govindaraj, Subrot Sarma, Atharva Karulkar, Rahul Purwar and Sandip Kar
+# e-mail about the code: sandipkar@iitb.ac.in
+# DATE: March,2022
+
+# Ode file of the Deterministic model proposed in the above mentioned paper
+
+dMV/dt=(kmv/cf)*s*GF/(smv+(gmv*GF))-kdmv*MV
+#
+dMycm/dt=(bmyc*s)+kMcm1*MV+kMcm2*s*(DE**n)/(((s*kmm)**n)+(DE**n))-kdMcm*Mycm
+dMycp/dt=kMcp*Mycm-kdMcp*Mycp-(kdMcp1)*Mycp*Skp2/((s*Jms)+Mycp)
+#
+dE2Fm/dt=(be2f*s)+kEm1*Mycp+kEm2*s*(DE**n)/(((s*kmm)**n)+(DE**n))-kdEm*E2Fm
+dE2FT/dt=kEp1*E2Fm-kdEp*E2Fp-kdEp*DE-kdEp*iDE-(kdEp1*CycA*E2Fp/((s*JDE)+E2Fp))-kdEp1*CycA*DE/((s*JDE)+DE)
+dDE/dt=(kDE1/s)*Dp1p*E2Fp-kDE2*DE-(kRD1/s)*DE*Rb+kRD2*iDE-(kdEp*DE)+kiR3*iDEP*CycE/((s*JRE)+iDEP)-(kRpD1/s)*DE*iRb1+kRpD2*iDEP-((kdep1)*CycA*DE/((s*Jde)+DE))
+#
+dRbm/dt=krbm*s-kdrbm*Rbm
+dRbT/dt=krbp*Rbm-kdrbp*(Rb+iRb1+iRb2)-kdep*iDE
+diDE/dt=(kRD1/s)*DE*Rb-kRD2*iDE-kdep*iDE-kiR1*iDE*CycD/((s*JRD)+iDE)+kiR2*s*iDEp/((s*JR1)+iDEP)
+diDEP/dt=kiR1*iDE*CycD/((s*JRD)+iDE)-kiR2*s*iDEP/((s*JR1)+iDEP)+(kRpD1/s)*DE*iRb1-kRpD2*iDEP-(kiR3)*iDEP*CycE/((s*JRE)+iDEP)
+diRb1/dt=(kiR1)*Rb*CycD/((s*JRD)+Rb)-kiR2*s*iRb1/((s*JR1)+iRb1)-(kiR3)*iRb1*CycE/((s*JRE)+iRb1)+kiR4*s*iRb2/((s*JR2)+iRb2)-(kRpD1/s)*DE*iRb1+kRpD2*iDEP-kdrbp*iRb1
+diRb2/dt=(kiR3)*iRb1*CycE/((s*JRE)+iRb1)-kiR4*s*iRb2/((s*JR2)+iRb2)+(kiR3)*iDEP*CycE/((s*JRE)+iDEP)-kdrbp*iRb2
+#
+dCycDm/dt=kCDm1*MV+kCDm2*s*(Mycp/s)-kdCDm*CycDm
+dCycD/dt=kCDp1*CycDm-kdCDp*CycD-kdcp1*CycD*CycA/((Jcd*s)+CycD)
+#
+dCycEm/dt=bcycem*s+ksem*DE-kdcem*CycEm
+dCycE/dt=kse*CycEm-kde*CycE-(kaei/s)*CycE*I+kdei*EI-(kdea/s)*Skp2*CycE+(kdip/s)*Skp2*EI
+#
+dIm/dt=ksim*s-kdim*Im
+dI/dt=ksi*Im-kip*CycE*I/((s*Jce)+I)-(kaei/s)*CycE*I+kdei*EI-kdi*I
+dIp/st=kip*CycE*I/((s*Jce)+I)-kdip1*Ip-(kdip/s)*Skp2*Ip
+dEI/dt=(kaei/s)*CycE*I-kdei*EI-kde*EI-kdi*EI-(kdip/s)*Skp2*EI
+#
+dSkp2m/dt=k17m*s-k17dm*Skp2m
+dSkp2T/dt=k17*Skp2m-k18a*(Skp2T-Skp2)-k18b*(Skp2T-Skp2)*Cdh1/((s*J18)+(Skp2T-Skp2))-k18c*Skp2-k18d*Skp2*Cdh1/((s*J18b)+Skp2)
+dSkp2/dt=(k19a/s)*CycE*(Skp2T-Skp2)-(k19b*Skp2)-k18c*Skp2-k18d*Skp2*Cdh1/((s*J18b)+Skp2)
+#
+dCycAm/dt=(bsam*s)+ksam*DE-kdam*CycAm
+dCycA/dt=ksa*CycAm-kda*CycA-(kda1/s)*CycA*Cdh1
+#
+dCycBm/dt=kscbm*CycA-kdcbm*CycBm
+dCycBa/dt=kscb*CycBm+(kcba/s)*CycBi*C25a-(kcbi/s)*CycBa*Wee1a-kdcb*CycBa-(kdcb1/s)*CycBa*Cdh1
+dCycBT/dt=kscb*CycBm-kdcb*CycBT-(kdcb1/s)*CycBT*Cdh1
+#
+dC25m/dt=ksc25m*CycA-kdc25m*C25m
+dC25T/dt=ksc25*C25m-kdc25*C25T
+dC25a/dt=kc25a*CycBa*(C25i/(C25i+(s*kmc1)))-kc25i*s*(C25a/(C25a+(s*kmc2)))-kdc25*C25a
+#
+dWee1m/dt=(kswm*s*GF/(sgw+(kgw*GF)))-kdwm*Wee1m
+dWee1T/dt=ksw*Wee1m-kdw*Wee1T
+dWee1a/dt=ksw*Wee1m+kwa*s*(Wee1i/(Wee1i+(s*kmw1)))-kwi*CycBa*(Wee1a/(Wee1a+(s*kmw2)))-kdw*Wee1a
+#
+dCdh1m/dt=k3m*s-k3dm*Cdh1m
+dCdh1T/dt=k3*Cdh1m-k3d*Cdh1T
+dCdh1/dt=((k3a*s)+k3b*Cdc20A)*(Cdh1T-Cdh1)/((s*J3)+Cdh1T-Cdh1)-((k4*CycBa))*Cdh1/((s*J4)+Cdh1)-((k4b*CycA))*Cdh1/((s*J4)+Cdh1)-k3d*Cdh1
+#
+dCdc20m/dt=(k5am*s+k5bm*s*((CycBa/(s*J5))^(m))/(1+(CycBa/(s*J5))^(m)))-k5dm*Cdc20m
+dCdc20T/dt=k5a*Cdc20m-k6*Cdc20T
+dCdc20A/dt=k7*IEP*(Cdc20T-Cdc20A)/((s*J7)+Cdc20T-Cdc20A)-k8*s*Mad*Cdc20A/((s*J8)+Cdc20A)-k6*Cdc20A
+#
+dIEP/dt=((k9/s)*CycBa*(s-IEP)-k10*IEP)
+#
+dCdt1m/dt=(k21m*s-k21dm*Cdt1m)
+dCdt1/dt=k21*Cdt1m-k22a*Cdt1-k22b*Cdt1*Skp2/((s*J22)+Cdt1)
+dGemm/dt=k20m*s-k20dm*Gemm
+dGem/dt=k19*Gemm-k20a*Gem-k20b*Gem*Cdh1/((s*J20)+Gem)
+#
+Dp1p=(Dpt*s)-DE-iDE-iDEp
+E2Fp=E2FT-DE-iDE-iDEp
+Rb=RbT-iRb1-iRb2-iDE-iDEP
+CycBi=CycBT-CycBa
+C25i=C25T-C25a
+Wee1i=Wee1T-Wee1a
+
+
+######################################################################################
+
+global -1 {CycBa-0.1*s} {MV=MV/2;Mycm=Mycm/2;Mycp=Mycp/2;CycDm=CycDm/2;CycD=CycD/2}
+global -1 {CycBa-0.1*s} {E2Fm=E2Fm/2;E2FT=E2FT/2;DE=DE/2;iDE=iDE/2;iDEP=iDEP/2}
+global -1 {CycBa-0.1*s} {Rbm=Rbm/2;RbT=RbT/2;iRb1=iRb1/2;iRb2=iRb2/2}
+global -1 {CycBa-0.1*s} {CycEm=CycEm/2;CycE=CycE/2;Im=Im/2;I=I/2;Ip=Ip/2;EI=EI}
+global -1 {CycBa-0.1*s} {Skp2m=Skp2m/2;Skp2T=Skp2T/2;Skp2=Skp2/2}
+global -1 {CycBa-0.1*s} {Cdc20m=Cdc20m/2;Cdc20T=Cdc20T/2;Cdc20A=Cdc20A/2}
+global -1 {CycBa-0.1*s} {Cdh1m=Cdh1m/2;Cdh1T=Cdh1T/2;Cdh1=Cdh1/2;IEP=IEP/2}
+global -1 {CycBa-0.1*s} {Cdt1m=Cdt1m/2;Cdt1=Cdt1/2;Gemm=Gemm/2;Gem=Gem/2}
+global -1 {CycBa-0.1*s} {CycAm=CycAm/2;CycA=CycA/2}
+global -1 {CycBa-0.1*s} {CycBm=CycBm/2;CycBT=CycBT/2;CycBa=CycBa/2}
+global -1 {CycBa-0.1*s} {C25m=C25m/2;C25T=C25T/2;C25a=C25a/2}
+global -1 {CycBa-0.1*s} {Wee1m=Wee1m/2;Wee1T=Wee1T/2;Wee1a=Wee1a/2}
+#global -1 {CycBa-0.1*s} {cf=cf+0.2}
+
+p GF=2,cf=1.0,s=10000
+#MV
+p kmv=3,smv=2.2,gmv=0.2,kdmv=4
+#Mycm
+p bmyc=0.000033,kMcm1=0.033,kMcm2=0.000015
+p kmm=0.33,n=2
+p kdMcm=1.38
+#Mycp
+p kMcp=40,kdMcp=0.7,kdmcp1=2,Jms=0.001
+#E2Fm
+p be2f=0.0000033,kEm1=0.005,kEm2=0.0005,kdEm=0.25
+#E2Fp
+p kEp1=50.0,kdEp=0.25,kdEp1=1,JDE=1
+p kDE1=871.4,kDE2=55
+p Dpt=1
+#Rb
+p krbm=0.05,kdrbm=1.04
+p krbp=5,kdrbp=0.231
+p kRD1=100,kRD2=0.5
+p kRpD1=0.1,kRpD2=0.05
+p kiR1=0.8,JRD=0.01,kiR2=1,JR1=0.01,kiR3=60,JRE=0.001,kiR4=25.0,JR2=0.01
+#CycD
+p kCDm1=0.000001,kCDm2=0.01,kDCDm=0.173
+p kCDp1=56.67,kdCDp=1.386,kdcp1=2,JCD=0.01
+#CycE
+p bcycem=0.000002,ksem=0.04,kdcem=1
+p kse=100,kde=1,kdea=2
+#Im
+p ksim=0.0142,kdim=0.693
+#p27
+p ksi=100,kdi=1
+#EI
+p kaei=10,kdei=1
+p kip=5,Jce=0.1
+p kdip1=1.0,kdip=20
+#Skp2m
+p k17m=0.0036,k17dm=0.17
+#Skp2
+p k17=26.4706,k18a=19.412,k18b=52.941,J18=0.001,k19a=70.588,k19b=0.35294,k18c=0.028235,k18d=0.35294,J18b=0.01
+#CycA
+p bsam=0.000001,ksam=0.02,kdam=1
+p ksa=7.0588,kda=0.14118,kda1=3.5294
+#CycB
+p kscbm=0.02,kdcbm=0.1
+p kscb=3.5294,kdcb=0.14118,kdcb1=3.5294
+p kcba=35.294,kcbi=35.294
+#Cdc25
+p ksc25m=0.02,kdc25m=1
+p ksc25=176.47,kdc25=3.5294
+p kc25a=35.294,kc25i=1.4118,kmc1=0.05,kmc2=0.05
+#Wee1
+p kswm=0.016,sgw=1,kgw=0.5,kdwm=1
+p ksw=176.47,kdw=3.5294
+p kwa=14.118,kwi=176.47
+p kmw1=0.2,kmw2=0.2
+#Cdh1
+p k3m=0.06,k3dm=3
+p k3=176.47,k3d=3.5294
+p k3a=3.5294,k3b=176.47,J3=0.04,k4=123.53,k4b=123.53,J4=0.04
+#Cdc20T
+p k5am=0.00035294,k5bm=0.014118,J5=0.3,m=4,k5dm=0.35294
+p k5a=17.647,k6=0.35294
+#Cdc20A
+p k7=3.5294,J7=0.05,k8=1.7647,J8=0.05
+#IE
+p k9=0.35294,k10=0.070588,Mad=1
+#Cdtm
+p k21m=0.0075,k21dm=0.35
+#Cdt1
+p k21=8.8235,k22a=0.21176,k22b=7.0588,J22=0.04
+#Gemm
+p k20m=0.0075,k20dm=0.35
+#Gem
+p k19=8.8235,k20a=0.21176,k20b=3.5294,J20=0.5
+#
+#####################################################################################
+
+#numerical setting
+@ TOTAL=72,METH=Cvode,atol=3e-10,toler=3e-10,newt_tol=1e-10,XHI=72,XLO=0,YLO=0,YHI=15000,BOUND=5000000,maxstorage=10000000
+@ Dt=0.05
+
+#AUTO settings
+@ dsmax=.005, dsmin=.0001, ds=0.0005, ntst=2000, nmax=80000, npr=80000, parmin=0, parmax=10
+@ autoxmin=0, autoxmax=10, autoymin=0, autoymax=2
+#@ NPLOT=5,yp1=CycD,yp2=CycE,yp3=CycA,yp4=CycBa,yp5=Cdh1
+@ NPLOT=5,yp1=CycDm,yp2=CycEm,yp3=CycAm,yp4=CycBm,yp5=Cdh1m
+#@ NPLOT=6,yp1=DE,yp2=Cdt1,yp3=Cdh1,yp4=Gem,yp5=iRb1,yp6=iRb2
+#@ NPLOT=6,yp1=DE,yp2=Mycp,yp3=iRb1,yp4=iRb2,yp5=CycE,yp6=CycD
+done
+
+
