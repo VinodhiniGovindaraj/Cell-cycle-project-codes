@@ -1,11 +1,6 @@
-c	Paper: 
+c	Paper: Transcriptional fluctuations govern the serum dependent cell cycle duration heterogeneities in Mammalian cells
 c	Author: Vinodhini Govindaraj, Subrot Sarma, Atharva Karulkar, Rahul Purwar and Sandip Kar
-c	e-mail about the code: sandipkar@iitb.ac.in
-c	DATE: March,2022
-
-
-
-
+c	e-mail about the code: vinodhinigovindaraj@gmail.com,sandipkar@iitb.ac.in
 
 c	10% CV for asymmetric cell division
 c	Transcription rate variation
