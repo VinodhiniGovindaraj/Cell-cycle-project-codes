@@ -1,17 +1,7 @@
-%     Paper: Exploring the Roles of Noise in the Eukaryotic Cell Cycle
-%     (Submitted to PNAS)
-%     Author: Sandip Kar, William Baumann, Mark R. Paul and John J. Tyson
-%     e-mail about the code: skar@vt.edu
-%     DATE: 1st October, 2008
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     This program solves the deterministic odes for the cell-cycle model.
-%     Some features of the code:
-%     1) The odes are in terms of copy number
-%     2) The cell volume grows exponentially in time
-%     3) We include two extrinsic noise sources
-%        i)  unequal division size
-%        ii) unequal partitioning of molecules at division
-%
+%     Paper: Transcriptional fluctuations govern the serum dependent cell cycle duration heterogeneities in Mammalian cells
+%     Author: Vinodhini Govindaraj, Subrot Sarma, Atharva Karulkar, Rahul Purwar and Sandip Kar
+%     e-mail about the code: vinodhinigovindaraj@gmail.com,sandipkar@iitb.ac.in
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clearvars;
 
